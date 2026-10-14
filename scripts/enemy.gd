@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 @onready var audio_controller: Node = $AudioController
 @onready var collision: CollisionShape2D = $CollisionShape2D
-
+@onready var hurtbox: Area2D = $hurtbox
 @onready var bubble: Sprite2D = $bubble
 @export var does_wander:bool = false
 @export var wander_distance:Vector2
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 		if ray.is_colliding():
 			line.set_point_position(1,to_local(ray.get_collision_point()))
 			var collider = ray.get_collider()
-			if collider is Player and collider.status == "VISIBLE":
+			if collider is Player and collider.status != "HIDDEN":
 				if status != "FLOATING":
 					status = "ALERT"
 				elif status == "FLOATING":
@@ -79,7 +79,6 @@ func _physics_process(delta: float) -> void:
 				animator.play("idle")
 			"FLOATING":
 				bubble.visible = true
-				velocity.x = 0
 				velocity.y += (-get_gravity().y-10)*delta
 			"FALLING":
 				if not is_on_floor():
@@ -88,6 +87,9 @@ func _physics_process(delta: float) -> void:
 					unalert()
 	else:
 		if is_on_floor():
+			hurtbox.queue_free()
+			ray.queue_free()
+			line.queue_free()
 			collision.queue_free()
 			animator.play("death")
 			set_physics_process(false)

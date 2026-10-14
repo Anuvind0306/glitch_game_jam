@@ -591,12 +591,13 @@ script = ExtResource("7_frs5l")
 anchors_preset = -1
 anchor_right = 0.006
 anchor_bottom = 0.011000001
-offset_left = 438.0
-offset_top = 197.0
-offset_right = 494.16
-offset_bottom = 221.04
+offset_left = 544.0
+offset_top = 209.0
+offset_right = 565.16
+offset_bottom = 219.04
 theme_override_colors/font_hover_color = Color(0.83432573, 0.76118064, 0.10753506, 1)
 theme_override_fonts/font = ExtResource("9_mykxm")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mykxm")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_frs5l")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_tklts")
@@ -608,7 +609,7 @@ script = ExtResource("10_tklts")
 [node name="Camera" type="Node" parent="." unique_id=77481390]
 
 [node name="Camera2D" type="Camera2D" parent="Camera" unique_id=62443708]
-position = Vector2(424, 183)
-zoom = Vector2(3, 3)
+position = Vector2(467, 193)
+zoom = Vector2(2, 2)
 
 [connection signal="pressed" from="UI/play_button" to="UI/play_button" method="_on_pressed"]

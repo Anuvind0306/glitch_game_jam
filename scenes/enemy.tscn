@@ -166,7 +166,7 @@ animations = [{
 size = Vector2(9, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(7, 2)
+size = Vector2(11, 14)
 
 [node name="enemy" type="CharacterBody2D" unique_id=1582947510]
 collision_layer = 2
@@ -200,7 +200,7 @@ default_color = Color(1, 1, 1, 0)
 [node name="hurtbox" type="Area2D" parent="." unique_id=458008246]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=1101580065]
-position = Vector2(-0.5, -5)
+position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0.72429985, 0.106385656, 0.21033722, 0.41960785)
 

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 class_name Player
+@onready var bubble: Sprite2D = $bubble
 @onready var light: PointLight2D = $PointLight2D
 @onready var camera: Camera2D = $Camera2D
 @onready var audio_controller: Node = $AudioController
@@ -13,6 +14,7 @@ class_name Player
 var status = "VISIBLE"
 @onready var reloading:bool = false
 func _ready() -> void:
+	flicker()
 	if autoLoad.checkpoint != null:
 		position = autoLoad.checkpoint
 
@@ -20,6 +22,11 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if status != "DEAD":
+		if status == "FLOATING":
+			velocity.y += (-get_gravity().y-10)*delta
+		if Input.is_action_just_pressed("use") and is_on_floor():
+			is_floating(delta)
+			
 		if Input.is_action_just_pressed("fire") and reloading != true:
 			var crosshair = get_tree().get_first_node_in_group("crosshair")
 			crosshair.play("shot")
@@ -52,7 +59,7 @@ func _physics_process(delta: float) -> void:
 		elif direction == 1:
 			animator.flip_h = false
 
-		if direction:
+		if direction and status != "FLOATING":
 			velocity.x = direction * speed
 			if is_on_floor():
 				audio_controller.play_audio("run")
@@ -66,6 +73,7 @@ func _physics_process(delta: float) -> void:
 		elif is_on_floor() and velocity.x == 0:
 			animator.play("idle")
 	else:
+		bubble.visible = false
 		if is_on_floor():
 			animator.play("death")
 			set_physics_process(false)
@@ -91,7 +99,8 @@ func _on_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index
 		tween.set_parallel(true)
 		tween.tween_property(light,"energy",0.2,0.2)
 		tween.tween_property(light,"texture_scale",1,0.2)
-		status = "VISIBLE"
+		if status != "FLOATING":
+			status = "VISIBLE"
 
 func reload():
 	reloading = true
@@ -100,7 +109,14 @@ func reload():
 	reloading = false
 	label.text = ""
 
-
+func is_floating(delta:float):
+	status = "FLOATING"
+	bubble.visible = true
+	await get_tree().create_timer(3).timeout
+	bubble.visible = false
+	if status != "DEAD":
+		status = "VISIBLE"
+	
 func _on_head_hurt_box_body_entered(body: Node2D) -> void:
 	if body is Box and body.linear_velocity.y > 10:
 		collision.queue_free()
@@ -108,3 +124,9 @@ func _on_head_hurt_box_body_entered(body: Node2D) -> void:
 	if body is Hazard:
 		status = "DEAD"
 		
+func flicker():
+	light.texture_scale = light.texture_scale * 0.99
+	await get_tree().create_timer(0.25).timeout
+	light.texture_scale = light.texture_scale * 1.01
+	await get_tree().create_timer(0.25).timeout
+	flicker()

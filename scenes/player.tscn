@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://d2kf4odv0q85j" path="res://assets/audio/walk.wav" id="5_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://doibkr6ubk1k2" path="res://assets/audio/player_shoot.wav" id="6_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://cix3fyhn7qab8" path="res://assets/light.png" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://bqdvk8d3fc6an" path="res://assets/bubble.png" id="8_smehm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
 size = Vector2(9, 14)
@@ -235,6 +236,10 @@ color = Color(0.70697147, 0.62107164, 0.5432194, 1)
 energy = 0.2
 shadow_enabled = true
 texture = ExtResource("7_fjrip")
+
+[node name="bubble" type="Sprite2D" parent="." unique_id=1423774017]
+visible = false
+texture = ExtResource("8_smehm")
 
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
