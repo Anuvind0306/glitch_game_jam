@@ -3,7 +3,7 @@ class_name Enemy
 @onready var audio_controller: Node = $AudioController
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var hurtbox: Area2D = $hurtbox
-@onready var bubble: Sprite2D = $bubble
+@onready var bubble: AnimatedSprite2D = $bubble
 @export var does_wander:bool = false
 @export var wander_distance:Vector2
 @export var wait_duration:float = 2
@@ -22,8 +22,6 @@ func _ready() -> void:
 	unalert()
 
 func _physics_process(delta: float) -> void:
-	if status != "FLOATING":
-		bubble.visible = false
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
@@ -78,7 +76,6 @@ func _physics_process(delta: float) -> void:
 				velocity.x = 0
 				animator.play("idle")
 			"FLOATING":
-				bubble.visible = true
 				velocity.y += (-get_gravity().y-10)*delta
 			"FALLING":
 				if not is_on_floor():
@@ -86,6 +83,8 @@ func _physics_process(delta: float) -> void:
 				else:
 					unalert()
 	else:
+		if bubble.visible == true:
+			bubble_pop()
 		if is_on_floor():
 			hurtbox.queue_free()
 			ray.queue_free()
@@ -103,7 +102,11 @@ func flip_h():
 
 func is_floating(delta:float):
 	status = "FLOATING"
+	bubble.play("default")
+	bubble.visible = true
 	await get_tree().create_timer(3).timeout
+	bubble_pop()
+	await popped
 	if status != "DEAD":
 		status = "FALLING"
 
@@ -132,3 +135,11 @@ func alert_and_shoot():
 			collider.status = "DEAD"
 		await get_tree().create_timer(0.04).timeout
 		line.default_color = Color(1,1,1,0)
+
+func bubble_pop():
+	bubble.play("pop")
+	await bubble.animation_finished
+	bubble.visible = false
+	emit_signal("popped")
+
+signal popped

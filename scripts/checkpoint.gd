@@ -7,13 +7,22 @@ var is_active:bool = false
 func _ready() -> void:
 	sprite.play("disabled")
 
+	
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player and is_active == false:
-		autoLoad.checkpoint = Vector2(position.x+16,position.y)
+		autoLoad.last_checkpoint = autoLoad.current_checkpoint
+		autoLoad.current_checkpoint = self
+		if autoLoad.last_checkpoint != null:
+			autoLoad.last_checkpoint.disable()
+		autoLoad.respawn = Vector2(position.x+16,position.y)
 		audio.play(0)
+		is_active = true
 		sprite.play("trigger")
 		await sprite.animation_finished
-		is_active = true
 		sprite.play("activated")
+
+func disable():
+	is_active = false
+	sprite.play("disabled")

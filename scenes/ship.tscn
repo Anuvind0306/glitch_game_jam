@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://sxi6p0gd4nwk"]
+
+[ext_resource type="Texture2D" uid="uid://tmg3ilhog5hi" path="res://assets/ship.png" id="1_4tobq"]
+[ext_resource type="Script" uid="uid://2qp51ot53tdk" path="res://scripts/ship.gd" id="2_tfsc7"]
+[ext_resource type="FontFile" uid="uid://bpjra5ryamvw6" path="res://assets/Minecraftia-Regular.ttf" id="3_gudjc"]
+[ext_resource type="Texture2D" uid="uid://fxscpvtq10sa" path="res://assets/gear_icon.png" id="4_tfsc7"]
+[ext_resource type="AudioStream" uid="uid://gqcinp7mopko" path="res://assets/audio/gear_dropoff.wav" id="5_gudjc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j21i"]
+atlas = ExtResource("1_4tobq")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m36u"]
+atlas = ExtResource("1_4tobq")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qiel"]
+atlas = ExtResource("1_4tobq")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itrim"]
+atlas = ExtResource("1_4tobq")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bseor"]
+atlas = ExtResource("1_4tobq")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlr80"]
+atlas = ExtResource("1_4tobq")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03y04"]
+atlas = ExtResource("1_4tobq")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j21i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3m36u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qiel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itrim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bseor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlr80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03y04")
+}],
+"loop": 1,
+"name": &"burn",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(49, 42)
+
+[node name="ship" type="AnimatedSprite2D" unique_id=294867699]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"burn"
+autoplay = "burn"
+frame_progress = 0.65770227
+script = ExtResource("2_tfsc7")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=361604793]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=337906544]
+position = Vector2(0.5, 11)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Label" type="RichTextLabel" parent="." unique_id=1528085039]
+offset_left = 4.0
+offset_top = -22.0
+offset_right = 144.0
+offset_bottom = 38.0
+offset_transform_enabled = true
+theme_override_fonts/normal_font = ExtResource("3_gudjc")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_icons/horizontal_rule = ExtResource("4_tfsc7")
+bbcode_enabled = true
+text = "[img]res://assets/gear_icon.png[/img] x1/2"
+scroll_active = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1765123920]
+stream = ExtResource("5_gudjc")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

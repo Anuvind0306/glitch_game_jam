@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="recovered_game"
-run/main_scene="uid://cdcun4cvjodbc"
+run/main_scene="uid://ctlkapxio1kaw"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://drcm6tyweutfv"]
+
+[ext_resource type="Script" uid="uid://bg2r3erjsjt7o" path="res://scripts/end_screen.gd" id="1_85q8e"]
+[ext_resource type="Texture2D" uid="uid://btb2q78wcpgxe" path="res://assets/end-screen.png" id="2_fjxr3"]
+[ext_resource type="FontFile" uid="uid://bpjra5ryamvw6" path="res://assets/Minecraftia-Regular.ttf" id="3_ojf8p"]
+[ext_resource type="Texture2D" uid="uid://chygebg5y7gwt" path="res://assets/parallax-1.png" id="4_4835h"]
+[ext_resource type="Texture2D" uid="uid://m83vs7xtwj5c" path="res://assets/parallax-2.png" id="5_gxua3"]
+[ext_resource type="Texture2D" uid="uid://ct0jnua3v7y34" path="res://assets/parallax-3.png" id="6_hyprt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4835h"]
+atlas = ExtResource("2_fjxr3")
+region = Rect2(2560, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxua3"]
+atlas = ExtResource("2_fjxr3")
+region = Rect2(3200, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyprt"]
+atlas = ExtResource("2_fjxr3")
+region = Rect2(3840, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_notft"]
+atlas = ExtResource("2_fjxr3")
+region = Rect2(4480, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmkd0"]
+atlas = ExtResource("2_fjxr3")
+region = Rect2(0, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24b1x"]
+atlas = ExtResource("2_fjxr3")
+region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4wik"]
+atlas = ExtResource("2_fjxr3")
+region = Rect2(1280, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfflf"]
+atlas = ExtResource("2_fjxr3")
+region = Rect2(1920, 0, 640, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4835h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxua3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyprt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_notft")
+}],
+"loop": 1,
+"name": &"loop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmkd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24b1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4wik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfflf")
+}],
+"loop": 0,
+"name": &"opening",
+"speed": 12.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = ExtResource("3_ojf8p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hyprt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_notft"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmkd0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_24b1x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4wik"]
+
+[sub_resource type="GDScript" id="GDScript_4835h"]
+script/source = "extends Button
+"
+
+[node name="end_scene" type="Node2D" unique_id=1256220516]
+script = ExtResource("1_85q8e")
+
+[node name="Parallax1" type="Sprite2D" parent="." unique_id=1508327696]
+position = Vector2(320, 180)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("4_4835h")
+
+[node name="Parallax2" type="Sprite2D" parent="." unique_id=1738137374]
+position = Vector2(320, 180)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("5_gxua3")
+
+[node name="Parallax3" type="Sprite2D" parent="." unique_id=1982534327]
+position = Vector2(320, 180)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("6_hyprt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1474668830]
+position = Vector2(320, 180)
+scale = Vector2(1.1, 1.1)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"opening"
+
+[node name="Label" type="Label" parent="." unique_id=1861597942]
+modulate = Color(1, 1, 1, 0)
+offset_left = 256.0
+offset_top = 106.0
+offset_right = 376.0
+offset_bottom = 227.0
+text = "THANK YOU
+
+
+FOR PLAYING"
+label_settings = SubResource("LabelSettings_g4v7s")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1773885893]
+offset_left = -5.0
+offset_top = 241.0
+offset_right = 635.0
+offset_bottom = 281.0
+alignment = 1
+
+[node name="exit_button" type="Button" parent="HBoxContainer" unique_id=395015728]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.47397512, 0.47397608, 0.47397524, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ojf8p")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hyprt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_notft")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pmkd0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_24b1x")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i4wik")
+text = "Exit Game"
+script = SubResource("GDScript_4835h")
+
+[connection signal="pressed" from="HBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
