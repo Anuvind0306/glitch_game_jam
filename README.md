@@ -1,14 +1,18 @@
 P.O.P is a small stealth puzzle platformer. 
-
 You are a space pioneer who crash landed on to a hostile planet crawling with enemies.
 With only a gravity gun and your brain at your disposal, you must navigate the environment, sneak past hostiles, make them float into spikes
 and repair your ship to finally escape the planet.
-
+-----------------------------
 --TECHSTACK--
 
 Game engine: Godot
+
 Pixel art: Libresprite
+
 Sfx: jsfxr (https://sfxr.me/)
+
+-----------------------------
+
 
 itch.io:
 https://anuvindn.itch.io/pop
