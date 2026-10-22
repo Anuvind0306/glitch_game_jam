@@ -218,7 +218,6 @@ script = ExtResource("1_g2els")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=146630391]
 position = Vector2(-0.49999976, 1)
 shape = SubResource("RectangleShape2D_57qmd")
-metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=95163553]
 collision_mask = 129
@@ -228,17 +227,20 @@ metadata/_edit_lock_ = true
 position = Vector2(-0.5, 4)
 shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0.86255544, 0.3162872, 0.45341563, 0.41960785)
+metadata/_edit_lock_ = true
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1524656997]
 position = Vector2(6, 3)
 enabled = false
 target_position = Vector2(43, 0)
 collision_mask = 3
+metadata/_edit_lock_ = true
 
 [node name="Line2D" type="Line2D" parent="RayCast2D" unique_id=1743709467]
 points = PackedVector2Array(0, 0, 3, 0)
 width = 1.0
 default_color = Color(1, 1, 1, 0)
+metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="." unique_id=2038260927]
 offset_left = -12.0
@@ -248,17 +250,21 @@ offset_bottom = -4.0
 label_settings = SubResource("LabelSettings_g4v7s")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="hurt_box" type="Area2D" parent="." unique_id=1072819475]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box" unique_id=1133007264]
 position = Vector2(-0.49999976, 0.5)
 shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(0.80602276, 0.20106947, 0.8877627, 0.41960785)
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1932726586]
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2126847948]
 light_mask = 0
@@ -268,6 +274,7 @@ metadata/_edit_lock_ = true
 
 [node name="AudioController" type="Node2D" parent="." unique_id=1016550236]
 script = ExtResource("4_qlg0r")
+metadata/_edit_lock_ = true
 
 [node name="run" type="AudioStreamPlayer2D" parent="AudioController" unique_id=565780377]
 stream = ExtResource("5_tuyoq")
@@ -278,17 +285,20 @@ stream = ExtResource("6_tuyoq")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=410123186]
 current = true
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=393492340]
 color = Color(0.5921569, 0.50980395, 0.43529412, 1)
 energy = 0.3
 shadow_enabled = true
 texture = ExtResource("7_fjrip")
+metadata/_edit_lock_ = true
 
 [node name="bubble" type="AnimatedSprite2D" parent="." unique_id=1743621076]
 visible = false
 sprite_frames = SubResource("SpriteFrames_smehm")
 autoplay = "default"
+metadata/_edit_lock_ = true
 
 [node name="float_timer" type="Timer" parent="." unique_id=2067261030]
 

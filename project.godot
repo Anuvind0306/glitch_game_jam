@@ -10,9 +10,11 @@ config_version=5
 
 [application]
 
-config/name="recovered_game"
+config/name="Pioneer_Off_Path"
 run/main_scene="uid://ctlkapxio1kaw"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]

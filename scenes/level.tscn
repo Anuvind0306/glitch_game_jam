@@ -525,46 +525,6 @@ tile_map_data = PackedByteArray("AAA3ABoAAAABAAAAAAA2ABoAAAABAAAAAACRAEYAAAABAAA
 tile_set = SubResource("TileSet_d0u6y")
 script = ExtResource("7_t1rx8")
 
-[node name="TutorialBoxes" type="Node2D" parent="." unique_id=1988266787]
-
-[node name="tutorial_box" parent="TutorialBoxes" unique_id=2033550159 instance=ExtResource("8_b121j")]
-offset_left = -10.0
-offset_top = 172.0
-offset_right = 122.0
-offset_bottom = 224.0
-string = "Press [b]A/D[/b] to move and [b]Space[/b] to Jump"
-
-[node name="tutorial_box2" parent="TutorialBoxes" unique_id=1570100670 instance=ExtResource("8_b121j")]
-offset_left = 230.0
-offset_top = 237.0
-offset_right = 371.0
-offset_bottom = 277.0
-string = "There's an enemy ahead!
-Try [b]hiding[/b]  in the [b]grass.[/b]"
-area_size = Vector2(100, 120)
-
-[node name="tutorial_box3" parent="TutorialBoxes" unique_id=1308958731 instance=ExtResource("8_b121j")]
-offset_left = 96.0
-offset_top = 165.0
-offset_right = 209.0
-offset_bottom = 197.0
-string = "Try using your [b]gravity gun[/b] on this box! (Left mouse)"
-area_size = Vector2(50, 20)
-
-[node name="tutorial_box4" parent="TutorialBoxes" unique_id=2010346437 instance=ExtResource("8_b121j")]
-offset_left = 1286.0
-offset_top = 562.0
-offset_right = 1385.0
-offset_bottom = 589.0
-string = "Press shift to enclose yourself in a bubble. Press shift again to cancel."
-
-[node name="tutorial_box5" parent="TutorialBoxes" unique_id=1345467856 instance=ExtResource("8_b121j")]
-offset_left = 193.0
-offset_top = 214.0
-offset_right = 292.0
-offset_bottom = 237.0
-string = "Bring the gear back to the ship."
-
 [node name="PhysicsBodies" type="Node2D" parent="." unique_id=218158086]
 
 [node name="box" parent="PhysicsBodies" unique_id=583956710 instance=ExtResource("9_8c41q")]
@@ -587,6 +547,44 @@ position = Vector2(884, 544)
 [node name="Checkpoint3" parent="Checkpoints" unique_id=254605721 instance=ExtResource("13_64w2a")]
 position = Vector2(1135, 288)
 
+[node name="TutorialBoxes" type="Node2D" parent="." unique_id=1988266787]
+
+[node name="tutorial_box3" parent="TutorialBoxes" unique_id=1891421908 instance=ExtResource("8_b121j")]
+offset_left = 103.0
+offset_top = 162.0
+offset_right = 157.0
+offset_bottom = 195.0
+string = "Try using your [b]gravity gun[/b] on this box! (Left mouse)"
+
+[node name="tutorial_box" parent="TutorialBoxes" unique_id=2033550159 instance=ExtResource("8_b121j")]
+offset_top = 166.0
+offset_right = 72.0
+offset_bottom = 216.0
+string = "Press [b]A/D[/b] to move and [b]Space[/b] to Jump"
+
+[node name="tutorial_box2" parent="TutorialBoxes" unique_id=1570100670 instance=ExtResource("8_b121j")]
+offset_left = 230.0
+offset_top = 237.0
+offset_right = 371.0
+offset_bottom = 277.0
+string = "There's an enemy ahead!
+Try [b]hiding[/b]  in the [b]grass.[/b]"
+area_size = Vector2(100, 120)
+
+[node name="tutorial_box4" parent="TutorialBoxes" unique_id=2010346437 instance=ExtResource("8_b121j")]
+offset_left = 1286.0
+offset_top = 562.0
+offset_right = 1385.0
+offset_bottom = 589.0
+string = "Press shift to enclose yourself in a bubble. Press shift again to cancel."
+
+[node name="tutorial_box5" parent="TutorialBoxes" unique_id=1345467856 instance=ExtResource("8_b121j")]
+offset_left = 193.0
+offset_top = 214.0
+offset_right = 292.0
+offset_bottom = 237.0
+string = "Bring the gear back to the ship."
+
 [node name="Entities" type="Node2D" parent="." unique_id=187810569]
 
 [node name="enemy2" parent="Entities" unique_id=962279950 instance=ExtResource("7_klq6b")]
@@ -602,7 +600,7 @@ flip = true
 
 [node name="player" parent="Entities" unique_id=2116451986 groups=["player"] instance=ExtResource("2_w7c3h")]
 z_index = 1
-position = Vector2(-10, 200)
+position = Vector2(86, 200)
 
 [node name="enemy3" parent="Entities" unique_id=1135166172 instance=ExtResource("7_klq6b")]
 position = Vector2(1164, 584)

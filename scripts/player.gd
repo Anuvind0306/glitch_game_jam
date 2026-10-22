@@ -19,6 +19,7 @@ var collected_gears = 0
 @onready var reloading:bool = false
 
 func _ready() -> void:
+	collision.shape.size.y = 14
 	animator.play("idle")
 
 	flicker()
@@ -119,7 +120,7 @@ func is_floating(delta:float):
 		status = "VISIBLE"
 func _on_head_hurt_box_body_entered(body: Node2D) -> void:
 	if body is Box and body.linear_velocity.y > 10:
-		collision.queue_free()
+		collision.shape.size.y = 0.1
 		status = "DEAD"
 	if body is Hazard:
 		status = "DEAD"
